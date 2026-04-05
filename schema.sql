@@ -46,6 +46,7 @@ CREATE TABLE group_members (
 
 -- Pre-populate some predefined subjects
 INSERT INTO subjects (name) VALUES 
-('Mathematics'), ('Physics'), ('Chemistry'), ('Biology'), 
-('Computer Science'), ('Literature'), ('History'), ('Art'),
-('Economics'), ('Philosophy'), ('Psychology'), ('Engineering');
+('SQL'), ('Python'), ('Java'), ('Linux'), 
+('AWS'), ('Big Data'), ('R'), ('Aptitude'),
+('Data Visualisation'), ('Statistics');
+
