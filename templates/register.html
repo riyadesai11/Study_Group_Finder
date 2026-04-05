@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="auth-container glass-card">
+    <h2>Create Account</h2>
+    <p>Join our community of active learners.</p>
+    
+    <form method="post">
+        <div class="form-group">
+            <label class="form-label" for="username">Username</label>
+            <input class="form-control" type="text" name="username" id="username" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" type="password" name="password" id="password" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="skill_level">Overall Skill Level</label>
+            <select class="form-control" name="skill_level" id="skill_level" required>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Expert">Expert</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+    </form>
+    
+    <p style="margin-top: 1.5rem; text-align: center;">
+        Already have an account? <a href="{{ url_for('login') }}" style="color: var(--accent);">Login</a>
+    </p>
+</div>
+{% endblock %}

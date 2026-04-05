@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="glass-card" style="margin-bottom: 2rem;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div>
+            <h1 style="margin-bottom: 0.5rem;">{{ group['name'] }}</h1>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <span class="badge badge-subject">{{ group['subject_name'] }}</span>
+                <span class="badge badge-outline">Created by {{ group['creator_name'] }}</span>
+            </div>
+            <p style="font-size: 1.1rem; max-width: 800px;">{{ group['description'] }}</p>
+        </div>
+        <div>
+            {% if is_member %}
+                <form action="{{ url_for('leave_group', group_id=group['id']) }}" method="post" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Leave Group</button>
+                </form>
+            {% else %}
+                <form action="{{ url_for('join_group', group_id=group['id']) }}" method="post" style="display: inline;">
+                    <button type="submit" class="btn btn-primary">Join Group Now</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="glass-card">
+    <h3 style="border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; margin-bottom: 1rem;">Group Members ({{ members|length }})</h3>
+    
+    <ul class="member-list">
+        {% for member in members %}
+            <li class="member-item">
+                <div class="member-avatar">{{ member['username'][0]|upper }}</div>
+                <div>
+                    <h4 style="margin: 0; font-size: 1rem;">{{ member['username'] }}</h4>
+                    <span class="badge badge-outline" style="margin: 0.25rem 0 0 0; font-size: 0.7rem;">{{ member['skill_level'] }}</span>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

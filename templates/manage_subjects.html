@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+    <h2>Manage Your Subjects</h2>
+    <p>Select the subjects you are interested in. We'll use this to match you with the perfect study groups!</p>
+    
+    <form method="post">
+        <div class="subject-list" style="margin-top: 2rem;">
+            {% for subject in all_subjects %}
+                <label class="subject-item">
+                    <input type="checkbox" name="subjects" value="{{ subject['id'] }}" 
+                           {% if subject['id'] in user_subject_ids %}checked{% endif %}>
+                    {{ subject['name'] }}
+                </label>
+            {% endfor %}
+        </div>
+        
+        <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-outline">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
