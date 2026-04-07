@@ -1,12 +1,15 @@
+DROP TABLE IF EXISTS group_members;
+DROP TABLE IF EXISTS user_subjects;
+DROP TABLE IF EXISTS messages;
+DROP TABLE IF EXISTS meetings;
+DROP TABLE IF EXISTS groups;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS subjects;
-DROP TABLE IF EXISTS user_subjects;
-DROP TABLE IF EXISTS groups;
-DROP TABLE IF EXISTS group_members;
 
 CREATE TABLE users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     prn TEXT UNIQUE NOT NULL,
+    name TEXT NOT NULL,
     password_hash TEXT NOT NULL,
     skill_level TEXT NOT NULL
 );
@@ -49,4 +52,28 @@ INSERT INTO subjects (name) VALUES
 ('SQL'), ('Python'), ('Java'), ('Linux'), 
 ('AWS'), ('Big Data'), ('R'), ('Aptitude'),
 ('Data Visualisation'), ('Statistics');
+
+CREATE TABLE messages (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    message TEXT,
+    file_url TEXT,
+    file_name TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (group_id) REFERENCES groups (id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+);
+
+CREATE TABLE meetings (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER NOT NULL,
+    creator_id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    description TEXT,
+    scheduled_time DATETIME NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (group_id) REFERENCES groups (id) ON DELETE CASCADE,
+    FOREIGN KEY (creator_id) REFERENCES users (id) ON DELETE CASCADE
+);
 

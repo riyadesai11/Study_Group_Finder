@@ -2,7 +2,7 @@
 {% block content %}
 <div class="dashboard-header">
     <div>
-        <h1>Hello,{{ user['prn'] }} 👋</h1>
+        <h1>Hello, {{ user['name'] or user['prn'] }} 👋</h1>
         <p>Level: <span class="badge badge-outline">{{ user['skill_level'] }}</span></p>
     </div>
     <a href="{{ url_for('main.manage_subjects') }}" class="btn btn-primary">Manage Subjects</a>

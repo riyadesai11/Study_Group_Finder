@@ -15,7 +15,7 @@ def authenticate_user(prn, password):
         return user
     return None
 
-def register_user(prn, password, skill_level):
+def register_user(prn, name, password, skill_level):
     if not re.match(r'^2602403250(0[1-9]|[1-8][0-9])$', prn):
         return False, 'Invalid Student ID. Must be between 260240325001 and 260240325089.'
         
@@ -23,6 +23,6 @@ def register_user(prn, password, skill_level):
     if user is not None:
         return False, 'PRN is already registered.'
     
-    insert_db('INSERT INTO users (prn, password_hash, skill_level) VALUES (?, ?, ?)',
-              (prn, generate_password_hash(password), skill_level))
+    insert_db('INSERT INTO users (prn, name, password_hash, skill_level) VALUES (?, ?, ?, ?)',
+              (prn, name, generate_password_hash(password), skill_level))
     return True, 'Registration successful! Please login.'

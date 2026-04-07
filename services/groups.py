@@ -21,7 +21,7 @@ def create_group(name, description, subject_id, user_id):
 
 def get_group_details(group_id):
     return query_db('''
-        SELECT g.*, s.name as subject_name, u.prn as creator_prn
+        SELECT g.*, s.name as subject_name, u.prn as creator_prn, u.name as creator_name
         FROM groups g
         JOIN subjects s ON g.subject_id = s.id
         JOIN users u ON g.creator_id = u.id
@@ -30,7 +30,7 @@ def get_group_details(group_id):
 
 def get_group_members(group_id):
     return query_db('''
-        SELECT u.prn, u.skill_level, gm.joined_at
+        SELECT u.prn, u.name, u.skill_level, gm.joined_at
         FROM users u
         JOIN group_members gm ON u.id = gm.user_id
         WHERE gm.group_id = ?
@@ -97,3 +97,8 @@ def update_user_subjects(user_id, subject_ids):
 def get_user_subject_ids(user_id):
     user_subjects = query_db('SELECT subject_id FROM user_subjects WHERE user_id = ?', (user_id,))
     return [s['subject_id'] for s in user_subjects] if user_subjects else []
+
+def is_user_in_group(user_id, group_id):
+    """Checks if a specific user is a member of a group."""
+    res = query_db('SELECT 1 FROM group_members WHERE user_id = ? AND group_id = ?', (user_id, group_id), one=True)
+    return res is not None

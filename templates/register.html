@@ -6,6 +6,10 @@
 
     <form method="post">
         <div class="form-group">
+            <label class="form-label" for="name">Full Name</label>
+            <input class="form-control" type="text" name="name" id="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
             <label class="form-label" for="prn">Student ID</label>
             <input class="form-control" type="text" name="prn" id="prn" pattern="2602403250(0[1-9]|[1-8][0-9])"
                 minlength="12" maxlength="12" title="Invalid Student ID."

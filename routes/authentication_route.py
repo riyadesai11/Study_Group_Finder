@@ -22,10 +22,11 @@ def login():
 def register():
     if request.method == 'POST':
         prn = request.form['prn']
+        name = request.form['name']
         password = request.form['password']
         skill_level = request.form['skill_level']
         
-        success, message = register_user(prn, password, skill_level)
+        success, message = register_user(prn, name, password, skill_level)
         if not success:
             flash(message, 'error')
         else:
