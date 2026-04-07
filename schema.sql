@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS group_members;
 
 CREATE TABLE users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT UNIQUE NOT NULL,
+    prn TEXT UNIQUE NOT NULL,
     password_hash TEXT NOT NULL,
     skill_level TEXT NOT NULL
 );

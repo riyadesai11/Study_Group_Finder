@@ -3,11 +3,14 @@
 <div class="auth-container glass-card">
     <h2>Create Account</h2>
     <p>Join our community of active learners.</p>
-    
+
     <form method="post">
         <div class="form-group">
-            <label class="form-label" for="username">Username</label>
-            <input class="form-control" type="text" name="username" id="username" required>
+            <label class="form-label" for="prn">Student ID</label>
+            <input class="form-control" type="text" name="prn" id="prn" pattern="2602403250(0[1-9]|[1-8][0-9])"
+                minlength="12" maxlength="12" title="Invalid Student ID."
+                oninvalid="this.setCustomValidity('Invalid Student ID.')" oninput="this.setCustomValidity('')" required>
+            <small style="color: var(--text-secondary); display: block; margin-top: 0.25rem;"></small>
         </div>
         <div class="form-group">
             <label class="form-label" for="password">Password</label>
@@ -23,7 +26,7 @@
         </div>
         <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
     </form>
-    
+
     <p style="margin-top: 1.5rem; text-align: center;">
         Already have an account? <a href="{{ url_for('auth.login') }}" style="color: var(--accent);">Login</a>
     </p>

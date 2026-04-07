@@ -47,7 +47,7 @@ def group_detail(group_id):
         return redirect(url_for('groups.groups'))
         
     members = get_group_members(group_id)
-    is_member = check_is_member(members, user['username'])
+    is_member = check_is_member(members, user['prn'])
     
     return render_template('group_detail.html', group=group, members=members, is_member=is_member)
 

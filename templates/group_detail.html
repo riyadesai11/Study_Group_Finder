@@ -6,7 +6,7 @@
             <h1 style="margin-bottom: 0.5rem;">{{ group['name'] }}</h1>
             <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem;">
                 <span class="badge badge-subject">{{ group['subject_name'] }}</span>
-                <span class="badge badge-outline">Created by {{ group['creator_name'] }}</span>
+                <span class="badge badge-outline">Created by {{ group['creator_prn'] }}</span>
             </div>
             <p style="font-size: 1.1rem; max-width: 800px;">{{ group['description'] }}</p>
         </div>
@@ -30,9 +30,9 @@
     <ul class="member-list">
         {% for member in members %}
             <li class="member-item">
-                <div class="member-avatar">{{ member['username'][0]|upper }}</div>
+                <div class="member-avatar">{{ member['prn'][-2:] }}</div>
                 <div>
-                    <h4 style="margin: 0; font-size: 1rem;">{{ member['username'] }}</h4>
+                    <h4 style="margin: 0; font-size: 1rem;">{{ member['prn'] }}</h4>
                     <span class="badge badge-outline" style="margin: 0.25rem 0 0 0; font-size: 0.7rem;">{{ member['skill_level'] }}</span>
                 </div>
             </li>

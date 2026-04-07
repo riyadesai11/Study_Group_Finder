@@ -6,12 +6,12 @@ auth_bp = Blueprint('auth', __name__)
 @auth_bp.route('/login', methods=('GET', 'POST'))
 def login():
     if request.method == 'POST':
-        username = request.form['username']
+        prn = request.form['prn']
         password = request.form['password']
         
-        user = authenticate_user(username, password)
+        user = authenticate_user(prn, password)
         if user is None:
-            flash('Invalid username or password.', 'error')
+            flash('Invalid Student ID or password.', 'error')
         else:
             session['user_id'] = user['id']
             return redirect(url_for('main.dashboard'))
@@ -21,11 +21,11 @@ def login():
 @auth_bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
-        username = request.form['username']
+        prn = request.form['prn']
         password = request.form['password']
         skill_level = request.form['skill_level']
         
-        success, message = register_user(username, password, skill_level)
+        success, message = register_user(prn, password, skill_level)
         if not success:
             flash(message, 'error')
         else:

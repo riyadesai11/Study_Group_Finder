@@ -3,11 +3,14 @@
 <div class="auth-container glass-card">
     <h2>Welcome Back</h2>
     <p>Login to find your perfect study match.</p>
-    
+
     <form method="post">
         <div class="form-group">
-            <label class="form-label" for="username">Username</label>
-            <input class="form-control" type="text" name="username" id="username" required>
+            <label class="form-label" for="prn">Student ID</label>
+            <input class="form-control" type="text" name="prn" id="prn" pattern="2602403250(0[1-9]|[1-8][0-9])"
+                minlength="12" maxlength="12"
+                title="Invalid Student ID. Must be 12 digits (260240325001 - 260240325089)"
+                oninvalid="this.setCustomValidity('Invalid Student ID.')" oninput="this.setCustomValidity('')" required>
         </div>
         <div class="form-group">
             <label class="form-label" for="password">Password</label>
@@ -15,7 +18,7 @@
         </div>
         <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
     </form>
-    
+
     <p style="margin-top: 1.5rem; text-align: center;">
         Don't have an account? <a href="{{ url_for('auth.register') }}" style="color: var(--accent);">Register</a>
     </p>

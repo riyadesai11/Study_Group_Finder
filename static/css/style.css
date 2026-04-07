@@ -31,7 +31,8 @@ body {
 }
 
 /* Background effects */
-body::before, body::after {
+body::before,
+body::after {
     content: '';
     position: fixed;
     border-radius: 50%;
@@ -64,7 +65,10 @@ a {
 }
 
 /* Typography */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-weight: 600;
     margin-bottom: 1rem;
     line-height: 1.2;
@@ -74,6 +78,7 @@ h1 {
     font-size: 2.5rem;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
@@ -108,6 +113,7 @@ p {
     font-weight: 700;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: -0.5px;
 }
@@ -210,6 +216,7 @@ p {
     border: 1px solid var(--error);
     color: #fca5a5;
 }
+
 .btn-danger:hover {
     background: rgba(239, 68, 68, 0.2);
     box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
@@ -249,6 +256,7 @@ p {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
 }
+
 .form-control::placeholder {
     color: var(--text-secondary);
     opacity: 0.6;
@@ -261,6 +269,7 @@ select.form-control {
     background-position: right 1rem center;
     background-size: 16px;
 }
+
 select.form-control option {
     background: var(--bg-color);
 }
@@ -294,8 +303,13 @@ select.form-control option {
     gap: 2rem;
 }
 
-.grid-cols-2 { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
-.grid-cols-3 { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.grid-cols-2 {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.grid-cols-3 {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
 
 /* Alerts / Flashes */
 .flash-messages {
@@ -322,8 +336,15 @@ select.form-control option {
 }
 
 @keyframes slideIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Dashboard specific */
@@ -350,8 +371,13 @@ select.form-control option {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Center Form Container (Login/Register) */
@@ -373,9 +399,11 @@ select.form-control option {
     padding: 0.75rem;
     border-bottom: 1px solid var(--border-color);
 }
+
 .member-item:last-child {
     border-bottom: none;
 }
+
 .member-avatar {
     width: 40px;
     height: 40px;
@@ -395,20 +423,23 @@ select.form-control option {
     gap: 1rem;
     margin-bottom: 1.5rem;
 }
+
 .subject-item {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
-    background: rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.05);
     padding: 0.5rem 1rem;
     border-radius: 99px;
     border: 1px solid var(--border-color);
     transition: all 0.2s;
 }
+
 .subject-item:hover {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
 }
+
 .subject-item input[type="checkbox"] {
     appearance: none;
     width: 1.2rem;
@@ -420,10 +451,12 @@ select.form-control option {
     position: relative;
     transition: all 0.2s;
 }
+
 .subject-item input[type="checkbox"]:checked {
     background: var(--accent);
     border-color: var(--accent);
 }
+
 .subject-item input[type="checkbox"]:checked::after {
     content: '✓';
     position: absolute;
@@ -437,7 +470,7 @@ select.form-control option {
 .empty-state {
     text-align: center;
     padding: 3rem 1rem;
-    background: rgba(255,255,255,0.02);
+    background: rgba(255, 255, 255, 0.02);
     border-radius: 12px;
     border: 1px dashed var(--border-color);
 }
